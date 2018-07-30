@@ -3775,8 +3775,8 @@
 
         $AEE.elements.$header = $('<td id="aee-header"></td>').appendTo($AEE.elements.$widgetTableFirstRow);
         $AEE.elements.$headerButtons = $('<div id="aee-header-buttons"></div>').appendTo($AEE.elements.$header);
-        $AEE.elements.$logoLink = $('<a href="#" target="_blank" id="aee-logo-link" />').appendTo($AEE.elements.$header);
-        $AEE.elements.$logoImage = $('<img src="" id="aee-logo-img" />').appendTo($AEE.elements.$logoLink);
+        //$AEE.elements.$logoLink = $('<a href="#" target="_blank" id="aee-logo-link" />').appendTo($AEE.elements.$header);
+        //$AEE.elements.$logoImage = $('<img src="" id="aee-logo-img" />').appendTo($AEE.elements.$logoLink);
         $AEE.elements.$headerTitle = $('<div id="aee-header-title" />').appendTo($AEE.elements.$header);
         $AEE.elements.$lastSave = $('<div id="aee-header-lastsave" />').html($A.translate('It has not been saved yet')).appendTo($AEE.elements.$header);
         $AEE.saved = false;
@@ -4053,14 +4053,14 @@
         $('<style>#aee-block-list .aee-ui-state-highlight:before{content: "' + $A.translate("Delete") + '"}</style>').appendTo('body:first');
 
 
-        if (!$AEE.d.values.logoLink) {
+        /*if (!$AEE.d.values.logoLink) {
             $AEE.logoLink('https://automizy.com');
         }
         if (!$AEE.d.values.logoSrc) {
             $AEE.logoSrc($AEE.d.config.dir + '/images/logo-automizy.png');
-        }
+        }*/
         if (!$AEE.d.values.title) {
-            $AEE.title($A.translate('Automizy Email Editor'));
+            $AEE.title('Email Editor');
         }
         if (!$AEE.d.values.subject) {
             $AEE.subject($A.translate('Test email'));

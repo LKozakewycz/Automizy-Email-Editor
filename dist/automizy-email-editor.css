@@ -1,3 +1,9 @@
+ls\:outputfield:hover {
+    background: #bef0ff;
+    outline: 2px solid #348fd4;
+}
+
+
 #automizy-email-editor{
     position: fixed;
     top:0;
@@ -53,7 +59,7 @@
 #automizy-email-editor #aee-header-title{
     position: absolute;
     top:14px;
-    left:80px;
+    left:25px;
     display: inline-block;
     font-size: 20px;
     font-weight: bold;
