@@ -3,7 +3,7 @@
 (function() {
     $AEE.init().open();
 
-    addDynamicEventListener(document, 'click', 'ls\\:outputfield', function(e) {
+    addDynamicEventListener(document, 'dblclick', 'ls\\:outputfield', function(e) {
         tinymce.editors[0].plugins.outputfield.openMergeSelector();
     }, true);
 })();
