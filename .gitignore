@@ -6,3 +6,5 @@ node_modules/
 nbproject
 composer.phar
 composer.lock
+dist/npm-debug.log
+npm-debug.log
