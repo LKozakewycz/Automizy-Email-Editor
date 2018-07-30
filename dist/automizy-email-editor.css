@@ -302,8 +302,8 @@
 }
 .automizy-touchable .mce-panel.mce-floatpanel{
     position:fixed !important;
-    top:0 !important;
-    left:0 !important;
+    top:0;
+    left:0;
 }
 .mce-tinymce.mce-tinymce-inline.mce-container.mce-panel.mce-floatpanel.mce-tinymce-inline-inside{
     display: none;
@@ -754,8 +754,8 @@
 #automizy-email-editor.automizy-touchable #aee-document{
     width:85%;
     max-width:85%;
-    margin:60px 0 200px 0;
-    float:left;
+    /*margin:60px 0 200px 0;
+    float:left;*/
 }
 #automizy-email-editor.automizy-touchable #aee-block-touch-controller{
     position: absolute;
