@@ -194,6 +194,10 @@
             /*schema: "html5",*/
             convert_fonts_to_spans: true,
             entity_encoding:"raw",
+            extended_valid_elements: "ls:*[*]",
+            custom_elements: "ls:*[*]",
+            custom_tag_ns_prefix: "ls",
+            custom_tags: "outputField",
             valid_elements: ""
             + "a[accesskey|charset|class|coords|dir<ltr?rtl|href|hreflang|id|lang|name|rel|rev|shape<circle?default?poly?rect|style|tabindex|title|target|type],"
             + "abbr[class|dir<ltr?rtl|id|lang|style|title],"
@@ -295,7 +299,7 @@
                 underline : {inline : 'u'}
             },
             fontsize_formats: "6pt 8pt 10pt 11pt 12pt 13pt 14pt 16pt 18pt 20pt 24pt 28pt 34pt 36pt",
-            plugins: "colorpicker textcolor table link code contextmenu lists advlist",
+            plugins: "colorpicker textcolor table link code contextmenu lists advlist outputfield",
             tools: "inserttable",
             theme_advanced_text_colors : "FF00FF,FFFF00,00FF00,FF0000,0000FF,000000",
             font_formats:$AEE.settings.tinymceFontFamilies,
@@ -314,7 +318,7 @@
                 }
             ],
             toolbar: [
-                "styleselect | undo redo | alignleft aligncenter alignright alignjustify | image | link | bullist numlist | customfields systemfields",
+                "styleselect | undo redo | alignleft aligncenter alignright alignjustify | image | link | bullist numlist | outputfield",
                 "bold italic underline | fontselect fontsizeselect | forecolor backcolor | table | code"
             ],
             contextmenu: "link inserttable | cell row column deletetable",
@@ -340,10 +344,26 @@
                         editor.formatter.apply('jqueryTextColor', {value : 'red'});
                     }
                 });
+                /*
                 editor.addButton('customfields', {
                     type: 'menubutton',
                     text: $A.translate('Custom fields'),
                     icon: false,
+                    onclick: function() {
+                        editor.windowManager.open({
+                            title: 'Insert Merge Field',
+                            url: 'mergeselector.html',
+                            width: 700,
+                            height:500,
+                            onSubmit: function(e) {
+                                var params = editor.windowManager.getParams();
+                                console.log(params);
+                            }
+                        }, {
+                            mergeObject: 'ls3__Registration__c',
+                            mergeField: 'id'
+                        });
+                    }/*
                     menu: [
                         {
                             text: $A.translate('User defined'),
@@ -353,8 +373,9 @@
                             text: $A.translate('Built-in'),
                             menu: $AEE.getTinyMceBuiltInMenu(editor)
                         }
-                    ]
+                    ]* /
                 });
+                */
                 editor.on('BeforeSetContent', function(e) {
                     /*fix: link underline*/
                     if(e.content.substring(0, 3) === '<a '){
@@ -362,13 +383,13 @@
                             e.content = $(e.content).attr('style', 'text-decoration:none').wrapInner('<u></u>')[0].outerHTML;
                         }
                     }
-                    console.log('BeforeSetContent event', e);
+                    //console.log('BeforeSetContent event', e);
                 });
+                /*
                 editor.on('NodeChange', function(e) {
                     console.log('NodeChange event', e);
                     console.log($AEE.rgbStyleToHex(getColor(e)));
                 });
-                /*
                 editor.on('AddUndo', function(e) {
                     console.log('AddUndo event', e);
                 });
@@ -592,7 +613,7 @@
             },
             fontsize_formats: "6pt 8pt 10pt 11pt 12pt 13pt 14pt 16pt 18pt 20pt 24pt 28pt 34pt 36pt",
             font_formats:$AEE.settings.tinymceFontFamilies,
-            plugins: "colorpicker textcolor table link code contextmenu lists advlist",
+            plugins: "colorpicker textcolor table link code contextmenu lists advlist outputfield",
             tools: "inserttable",
             table_toolbar:false,
             theme_advanced_text_colors : "FF00FF,FFFF00,00FF00,FF0000,0000FF,000000",
@@ -785,7 +806,7 @@
                 $AEE.dragging = true;
                 $AEE.elements.$document.sortable("refreshPositions");
                 $AEE.elements.$blockListModal.show();
-                console.log('start');
+                //console.log('start');
             },
             stop: function (event, ui) {
                 $AEE.dragging = false;
@@ -798,12 +819,13 @@
                     }, 10);
                 }
 
-                console.log('stop');
+                //console.log('stop');
             },
             deactivate: function (event, ui) {
                 $AEE.elements.$blockListModal.hide();
-                console.log('deactivate');
+                //console.log('deactivate');
             },
+            /*
             over: function (event, ui) {
                 console.log('over');
             },
@@ -830,7 +852,7 @@
             },
             sort: function (event, ui) {
                 console.log('sort');
-            }
+            }*/
         };
     })
 })();
@@ -4289,8 +4311,11 @@
                      xhrArr.push($AEE.d.config.dir + "/vendor/jquery-file-upload/jquery.iframe-transport.js");
                  }
                  if (typeof $().tinymce === 'undefined') {
+                     console.info('loading tinymce asynchronously....');
                      xhrArr.push($AEE.d.config.dir + "/vendor/tinymce/tinymce.jquery.min.js");
                      xhrArr.push($AEE.d.config.dir + "/vendor/tinymce/jquery.tinymce.min.js");
+                 } else {
+                     console.info('tinymce already loaded!');
                  }
                 if (typeof AutomizyJs === 'undefined') {
                     loadStyles.push($AEE.d.config.dir + "/vendor/automizy-js/automizy.min.css");
