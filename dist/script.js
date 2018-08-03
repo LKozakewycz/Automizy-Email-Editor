@@ -4,6 +4,8 @@
     $AEE.init().open();
 
     addDynamicEventListener(document, 'dblclick', 'ls\\:outputfield', function(e) {
-        tinymce.editors[0].plugins.outputfield.openMergeSelector();
+        tinymce.editors[0].plugins.outputfield.openMergeSelector({
+            object: 'ls3__Registration__c'
+        });
     }, true);
 })();

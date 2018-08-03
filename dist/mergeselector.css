@@ -1,0 +1,86 @@
+body {
+    padding:25px;
+    font-family:Arial,Verdana;
+}
+
+.merge-selector {
+    height:400px !important;
+}
+
+
+.merge-selector input, .merge-selector select {
+    border-radius:3px;
+    padding:5px;
+    max-width:75%;
+    border:1px solid #c7c7c7;
+}
+
+
+.merge-object-title {
+    font-size:1rem !important;
+    padding-bottom:15px !important;
+    font-weight:bold !important;
+}
+
+.merge-object-title .merge-object-name {
+    font-weight:normal !important;
+}
+
+.merge-selector .field-selector_child-arrow {
+    width: 20px;
+    height: auto;
+    margin-right:10px;
+}
+
+.merge-selector .field-selector_preview {
+    padding: 0 10px;
+    line-height: 1.75rem;
+    color: #989898;
+    font-family: monospace;
+    font-size: 0.8rem;
+}
+
+.merge-selector .field-selector {
+    padding:15px;
+}
+
+.merge-selector .field-selector_main {
+    padding-left:0px;
+}
+
+
+.merge-selector .merge-field_output label {
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    display: block;
+    color: #a9a9a9;
+    padding: 5px;
+    letter-spacing: 0.03rem;
+}
+
+.merge-selector .merge-field_output #merge-field {
+    width:100%;
+    font-family:monospace;
+    font-size: 0.7rem;
+    padding: 12px 15px;
+    background: #2b2b2b;
+    color: #a6ffc2;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#select-button {
+    padding: 7px 15px;
+    border-radius: 3px;
+    background: #4f9cff;
+    border: 0;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+#select-button {
+    background:#3f92fd;
+}

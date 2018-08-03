@@ -5,13 +5,29 @@ tinymce.PluginManager.add('outputfield', function(editor, url) {
     function openMergeSelector() {
         editor.windowManager.open({
             title: 'Insert Field',
-            url: 'mergeselector.html',
+            body: [
+                {
+                    type: 'container',
+                    name: 'container-name',
+                    html: '<div class="merge-selector"></div>'
+                }
+            ],
+            onPostRender: function(e, f) {
+                $('.merge-selector').mergeSelector({
+                    object: 'ls3__Registration__c'
+                });
+            },
             width: 700,
-            height:500,
-            onSubmit: function(e) {
-                var params = editor.windowManager.getParams();
-                console.log(params);
-            }
+            height:400,
+            buttons: [{
+                text: 'Select Field',
+                onclick: function(e) {
+                    var fieldHtml = $('.merge-selector').mergeSelector('toHTML');
+                    console.log('fieldHtml = ' + fieldHtml);
+                    editor.execCommand('mceInsertContent', false, fieldHtml);
+                    editor.windowManager.close();
+                }
+            }]
         }, {
             mergeObject: 'ls3__Registration__c',
             mergeField: 'id'
